@@ -1,0 +1,16 @@
+digraph G {
+graph [ dpi = 300]; 
+rankdir=LR;
+concentrate=False;
+mode=ipsep;
+sep="0.01";
+prog=dot;
+overlap=ipsep;
+voevent [fontname="Bitstream-Vera Sans", fontsize="7.0", shape=plaintext, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD ALIGN="CENTER">voevent</TD></TR><TR><TD BORDER="1" CELLPADDING="0"></TD></TR><TR><TD ALIGN="LEFT" PORT="id">- id</TD></TR><TR><TD ALIGN="LEFT" PORT="received">- received</TD></TR><TR><TD ALIGN="LEFT" PORT="ivorn">- ivorn</TD></TR><TR><TD ALIGN="LEFT" PORT="stream">- stream</TD></TR><TR><TD ALIGN="LEFT" PORT="role">- role</TD></TR><TR><TD ALIGN="LEFT" PORT="version">- version</TD></TR><TR><TD ALIGN="LEFT" PORT="author_ivorn">- author_ivorn</TD></TR><TR><TD ALIGN="LEFT" PORT="author_datetime">- author_datetime</TD></TR><TR><TD ALIGN="LEFT" PORT="xml">- xml</TD></TR></TABLE>>];
+cite [fontname="Bitstream-Vera Sans", fontsize="7.0", shape=plaintext, 
+label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD ALIGN="CENTER">cite</TD></TR><TR><TD BORDER="1" CELLPADDING="0"></TD></TR><TR><TD ALIGN="LEFT" PORT="id">- id</TD></TR><TR><TD ALIGN="LEFT" PORT="voevent_id">- voevent_id</TD></TR><TR><TD ALIGN="LEFT" PORT="ref_ivorn">- ref_ivorn</TD></TR><TR><TD ALIGN="LEFT" PORT="cite_type">- cite_type</TD></TR><TR><TD ALIGN="LEFT" PORT="description">- description</TD></TR></TABLE>>];
+coord [fontname="Bitstream-Vera Sans", fontsize="7.0", shape=plaintext, 
+label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD ALIGN="CENTER">coord</TD></TR><TR><TD BORDER="1" CELLPADDING="0"></TD></TR><TR><TD ALIGN="LEFT" PORT="id">- id</TD></TR><TR><TD ALIGN="LEFT" PORT="voevent_id">- voevent_id</TD></TR><TR><TD ALIGN="LEFT" PORT="ra">- ra</TD></TR><TR><TD ALIGN="LEFT" PORT="dec">- dec</TD></TR><TR><TD ALIGN="LEFT" PORT="error">- error</TD></TR><TR><TD ALIGN="LEFT" PORT="time">- time</TD></TR></TABLE>>];
+voevent -> cite  [arrowhead=crow];
+voevent -> coord [arrowhead=crow];
+}

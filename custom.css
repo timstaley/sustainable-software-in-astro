@@ -1,13 +1,37 @@
 /*p { text-align: left; }*/
+
+
+.reveal .slides {
+  height: 100%;
+  top: 0;
+  margin-top: 0;
+}
+
+.reveal .slides>section {
+  min-height: 90%;
+}
+
+.reveal .slides>section>section {
+  min-height: 100%;
+}
+
 .reveal h1 {
   font-size: 3.0em;
 }
 
+div.output_area pre {
+  font-size: 70%;
+}
+
+.reveal pre {
+  width: 100%
+}
 
 #header-left {
     position: absolute;
     top: 0.5%;
     left: 0.5%; 
+    font-size: 0.8em;
 }
 #header-right {
     position: absolute;
@@ -18,10 +42,25 @@
     position: absolute;
     bottom: 0.5%;
     left: 0.5%;
+    font-size: 0.8em;
 }
 
 #footer-middle {
     position: absolute;
     bottom: 2%;
     left: 45%;
+}
+
+
+img[alt=pumpkin] { 
+    width: 300px; 
+    position: relative;
+    left: 25%;  
+}
+
+
+img[alt=schema] { 
+    height: 450px;
+    position: relative;
+/*    left: 0%; */
 }
