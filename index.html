@@ -11850,6 +11850,9 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme"></p>
 <link rel="stylesheet" href="custom.css" id="custom-tweaks">
+
+<p>(Note to web-viewers - press space to advance a slide. Hit 'S' to see speaker notes)</p>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -11879,12 +11882,11 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Hi, I'm... For the past five years I've been working on 4 Pi Sky, which is a project focused on detection of radio-transients, and co-ordination of their follow-up. For this talk I was originally just going to present our recently published archiving and query tool VOEventDB, but:</p>
-<ul>
-<li>Since the committee were kind of enough to give me an extended slot, I thought I should perhaps try to talk on a slightly broader theme</li>
-<li>And: there's a load of documentation online already, which you can digest at your leisure!</li>
-</ul>
-<p>So, instead I thought I'd try to use VOEventDB as a sort of window onto a more general theme I've been thinking about recently, which I've put under the vague heading of sustainable software.</p>
+<p>4 Pi Sky: detection of radio-transients, and co-ordination of their follow-up.</p>
+<p>Before I get into the main talk, I just wanted to mention for any of you interested in working with transient alerts in real-time - we currently publish a combined feed of GCN, ASASSN and GAIA transient alerts, in VOEvent format - just browse to 4pisky.org and click 'voevents' at the top for more information.</p>
+<p>For this talk I was originally just going to present our recently published archiving and query tool VOEventDB, but
+since I'm in an extended slot, I thought I should try to talk on a slightly broader theme.</p>
+<p>So, instead I thought I'd try to use VOEventDB as a sort of window onto the much bigger topic of sustainable software.</p>
 
 </div>
 </div>
@@ -11899,7 +11901,20 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section><section>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So: What the hell is sustainable software? 
+It's a little bit buzzwordy - and incidentally there are now entire conferences devoted to software sustainability, so clearly I'll only be scratching the surface - but to me it basically means making software reusable.</p>
+
+</div>
+</div>
+</div>
+</aside></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -11930,8 +11945,8 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Definitions are many, fuzzy and varied. Here's mine:
-Sustainable software:</p>
+<p>So here's my definition.</p>
+<p>Sustainable software:</p>
 <ul>
 <li>can be used by someone other than the dev that wrote it
 (Without the dev sat looking over their shoulder). This includes installation!</li>
@@ -12024,7 +12039,8 @@ Sustainable software:</p>
 <li>Along the way I'll point out some of the ways I've tried to make it suitable for re-use</li>
 <li>and some tools that I found helpful.</li>
 </ul>
-<p>... to try to persuade you that opening up your code can be done with minimal time investment.</p>
+<p>... to try to persuade you that opening up your code can be done with minimal time investment.
+The tooling will be specific to Python. The vague moralising applies to any programming language of choice.</p>
 
 </div>
 </div>
@@ -12113,7 +12129,22 @@ Sustainable software:</p>
 
 </div>
 </div>
-</div></section><section>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Store raw XML - same data as you'd receive in real-time</li>
+<li>The VOEvent Schema has some flexibility, but there's a core subset we expect to see in all packets - use that for filtering and searching.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</aside></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12193,7 +12224,22 @@ Sustainable software:</p>
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The web-interface is very bare-bones - designed to be just usable enough for developers to test it manually, but it's not user friendly.</li>
+<li>I'm expecting that casual users will use the Python client-library, so let me give you a quick teaser demo of that</li>
+</ul>
+
+</div>
+</div>
+</div>
+</aside></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12205,41 +12251,29 @@ Sustainable software:</p>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>pip install voeventdb.remote
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>pip install voeventdb.remote --quiet 
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
+</div><aside class="notes">
 
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Collecting voeventdb.remote
-Collecting requests (from voeventdb.remote)
-  Using cached requests-2.11.1-py2.py3-none-any.whl
-Requirement already satisfied (use --upgrade to upgrade): six in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from voeventdb.remote)
-Requirement already satisfied (use --upgrade to upgrade): simplejson in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from voeventdb.remote)
-Requirement already satisfied (use --upgrade to upgrade): astropy in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from voeventdb.remote)
-Requirement already satisfied (use --upgrade to upgrade): pytz in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from voeventdb.remote)
-Requirement already satisfied (use --upgrade to upgrade): iso8601 in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from voeventdb.remote)
-Requirement already satisfied (use --upgrade to upgrade): numpy&gt;=1.7.0 in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from astropy-&gt;voeventdb.remote)
-Installing collected packages: requests, voeventdb.remote
-Successfully installed requests-2.11.1 voeventdb.remote-1.0.0
-</pre>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
-</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So to get the client-library up and running, you just use the standard python package installer  to install this 'voeventdb.remote' package, which is a one line command...</p>
 
 </div>
 </div>
-
-</div></section><section>
+</div>
+</aside></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
@@ -12269,7 +12303,19 @@ Successfully installed requests-2.11.1 voeventdb.remote-1.0.0
 </div>
 </div>
 
-</div></section><section>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And now you can import the api, fetch the number of packets in the remote database</p>
+
+</div>
+</div>
+</div>
+</aside></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
@@ -12328,7 +12374,20 @@ Successfully installed requests-2.11.1 voeventdb.remote-1.0.0
 </div>
 </div>
 
-</div></section><section>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Or fetch this mapping showing you the number of packets in each stream, and so on. 
+Except that, actually, a bunch of these streams are just composed of test-packets which verify the network is up and running, so let's filter those out.</p>
+
+</div>
+</div>
+</div>
+</aside></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
@@ -12373,7 +12432,19 @@ Successfully installed requests-2.11.1 voeventdb.remote-1.0.0
 </div>
 </div>
 
-</div></section><section>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To compose a filter-set, we just create a basic Python dictionary, choosing from a number of pre-defined dictionary keys which relate to the filters. And then we pass that dictionary into the endpoint-fetch function, and get back a neater list of streams.</p>
+
+</div>
+</div>
+</div>
+</aside></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12393,16 +12464,52 @@ Successfully installed requests-2.11.1 voeventdb.remote-1.0.0
 
 </div>
 </div>
-</div></div></section><section>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are extensive examples online, and I can show some of those in the demo session if people are interested. For now, let me back up a bit and focus on that install process.</p>
+
+</div>
+</div>
+</div>
+</aside></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>pip install voeventdb.remote
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting voeventdb.remote
+Collecting requests (from voeventdb.remote)
+  Using cached requests-2.11.1-py2.py3-none-any.whl
+Requirement already satisfied (use --upgrade to upgrade): six in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from voeventdb.remote)
+Requirement already satisfied (use --upgrade to upgrade): simplejson in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from voeventdb.remote)
+Requirement already satisfied (use --upgrade to upgrade): astropy in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from voeventdb.remote)
+Requirement already satisfied (use --upgrade to upgrade): pytz in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from voeventdb.remote)
+Requirement already satisfied (use --upgrade to upgrade): iso8601 in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from voeventdb.remote)
+Requirement already satisfied (use --upgrade to upgrade): numpy&gt;=1.7.0 in /home/staley/.virtualenvs/jupyterpres/lib/python2.7/site-packages (from astropy-&gt;voeventdb.remote)
+Installing collected packages: requests, voeventdb.remote
+Successfully installed requests-2.11.1 voeventdb.remote-1.0.0
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12422,7 +12529,19 @@ Successfully installed requests-2.11.1 voeventdb.remote-1.0.0
 
 </div>
 </div>
-</div></section></section><section><section>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The reason I want to focus on this is that it's easy to forget when you're developing your own code, how much of a mental barrier it is to actually trying something out, if it's a pain to install.</p>
+
+</div>
+</div>
+</div>
+</aside></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12501,8 +12620,10 @@ Successfully installed requests-2.11.1 voeventdb.remote-1.0.0
 <li>This is (a condensed version of) the setup.py for voeventdb.remote.</li>
 <li>It's almost all boilerplate which you could easily modify to any other project- author details, a list of dependencies, and so on.</li>
 <li>Mostly, you can set this up once and then forget about it.</li>
-<li>Howver, I'd like to draw attention to the version, because this can quickly become a pain.</li>
+<li>However, the version number has to manually edited every time you make a new release, which is easy to forget.</li>
+<li>It's also silly - we already have a version control system - Git!</li>
 </ul>
+<p>So here's a neat trick...</p>
 
 </div>
 </div>
@@ -12682,30 +12803,6 @@ Git commit-id: 02b727d168797a9ae9bc6835c15b37e384ea1557
 <h3 id="Deployment-&amp;-Hosting">Deployment &amp; Hosting<a class="anchor-link" href="#Deployment-&amp;-Hosting">&#182;</a></h3>
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="img/vonode.gif" alt="deploy"></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Deploments scripted with <a href="http://docs.ansible.com/ansible/index.html">Ansible</a></li>
-<li>Deployment scripts are <a href="https://github.com/4pisky/4pisky-voeventdb">open-source!</a></li>
-<li>Can test-drive locally using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> and <a href="https://www.vagrantup.com/">Vagrant</a></li>
-</ul>
-
-</div>
-</div>
 </div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12716,13 +12813,100 @@ Git commit-id: 02b727d168797a9ae9bc6835c15b37e384ea1557
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div><aside class="notes">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Related-issues-I've-not-had-time-to-cover">Related issues I've not had time to cover<a class="anchor-link" href="#Related-issues-I've-not-had-time-to-cover">&#182;</a></h2>
+<ul>
+<li>If you're writing a basic Python library, you don't need to think about this - document it, package it, test it, you're done.</li>
+<li>However... if you're releasing a package which works with a database, or is served through a web-interface, or talks to other custom code... you are a cruel, cruel person if you don't at least document your install process.</li>
+<li>Example...</li>
+</ul>
+
+</div>
+</div>
+</div>
+</aside></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="img/vonode.gif" alt="deploy"></p>
+
+</div>
+</div>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Postgres backend</li>
+<li>Served via Apache + mod_wsgi</li>
+<li>Use <a href="http://comet.readthedocs.io/">Comet</a> to receive latest VOEvents.</li>
+<li>Configuring a server like this is non-trivial.</li>
+<li><strong>The best way to document your install process is to automate it</strong></li>
+</ul>
+
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Deployments scripted with <a href="http://docs.ansible.com/ansible/index.html">Ansible</a></li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Deployment scripts are <a href="https://github.com/4pisky/4pisky-voeventdb">open-source!</a></li>
+<li>Can test-drive locally using <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> and <a href="https://www.vagrantup.com/">Vagrant</a></li>
+</ul>
+
+</div>
+</div>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>All of our deployments are scripted with Ansible</li>
+<li>This is a configuration management tool (you may have heard of Chef or Puppet)</li>
+<li>There's no getting around the fact that there is a setup overhead</li>
+<li>The first time you automate your install it will take days</li>
+<li>But then new server setups take minutes, rather than hours</li>
+</ul>
+
+</div>
+</div>
+</div>
+</aside></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Related-sustainability-issues-I've-not-had-time-to-cover">Related sustainability issues I've not had time to cover<a class="anchor-link" href="#Related-sustainability-issues-I've-not-had-time-to-cover">&#182;</a></h2>
 </div>
 </div>
 </div><aside class="notes">
@@ -12744,7 +12928,7 @@ Git commit-id: 02b727d168797a9ae9bc6835c15b37e384ea1557
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>The basics / extended checklist for writing 'good' software - to all new grad students I would recommend   <ul>
+<li>To all new grad students I would recommend   <ul>
 <li><a href="http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745">Wilson et al 2014, Best Practices for Scientific Computing</a>, and </li>
 <li><a href="https://arxiv.org/abs/1609.00037">Wilson et al 2016, Good Enough Practices...</a>.</li>
 </ul>
@@ -12753,7 +12937,21 @@ Git commit-id: 02b727d168797a9ae9bc6835c15b37e384ea1557
 
 </div>
 </div>
-</div></section><section>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>If you want a reminder of the basics, or an extended checklist for writing 'good' software - to all new grad students I would recommend   </li>
+</ul>
+
+</div>
+</div>
+</div>
+</aside></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12823,7 +13021,8 @@ Git commit-id: 02b727d168797a9ae9bc6835c15b37e384ea1557
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="VOEventDB">VOEventDB<a class="anchor-link" href="#VOEventDB">&#182;</a></h3><ul>
 <li>Provides a 'turn-key' queryable repository for transient alerts.</li>
-<li>Extensive user-docs at <a href="http://voeventdbremote.rtfd.io/">http://voeventdbremote.rtfd.io/</a></li>
+<li>Can be used as a remote service</li>
+<li>Or run your own</li>
 <li>Overview paper:  <a href="https://arxiv.org/abs/1606.03735">arXiv:1606.03735</a></li>
 </ul>
 
@@ -12863,7 +13062,38 @@ Git commit-id: 02b727d168797a9ae9bc6835c15b37e384ea1557
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Deployment">Deployment<a class="anchor-link" href="#Deployment">&#182;</a></h3><ul>
+<li>Docs are a start, but easily go out of date</li>
+<li>Automate!</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Fin">Fin<a class="anchor-link" href="#Fin">&#182;</a></h2><p>Thanks!</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Links:">Links:<a class="anchor-link" href="#Links:">&#182;</a></h2><ul>
+<li>Slides: <a href="http://tiny.cc/voeventdb-talk">http://tiny.cc/voeventdb-talk</a></li>
+<li>Project page: <a href="https://4pisky.org/voevents/">https://4pisky.org/voevents/</a></li>
+<li>Overview paper: <a href="https://arxiv.org/abs/1606.03735">arXiv:1606.03735</a></li>
+<li>Client-docs and tutorial: <a href="http://voeventdbremote.rtfd.io/">http://voeventdbremote.rtfd.io/</a></li>
+<li>Server-docs: <a href="http://voeventdb.rtfd.io/">http://voeventdb.rtfd.io/</a></li>
+<li>NBSphinx: <a href="https://nbsphinx.readthedocs.io/">https://nbsphinx.readthedocs.io/</a></li>
+<li>Versioneer: <a href="https://github.com/warner/python-versioneer">https://github.com/warner/python-versioneer</a></li>
+</ul>
 
 </div>
 </div>
