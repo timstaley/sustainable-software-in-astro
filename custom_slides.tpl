@@ -138,7 +138,7 @@ a.anchor-link {
           <h5>Sustainable Software</h5>
         </div>
         <div id="footer-left">
-          <h5>timstaley.co.uk/talks </h5>
+          <h5>tiny.cc/voeventdb-talk </h5>
         </div>
 <!--        <div id="footer-left"></div>-->
         <div id="footer-middle"> </div>
