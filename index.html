@@ -11831,7 +11831,7 @@ a.anchor-link {
           <h5>Sustainable Software</h5>
         </div>
         <div id="footer-left">
-          <h5>timstaley.co.uk/talks </h5>
+          <h5>tiny.cc/voeventdb-talk </h5>
         </div>
 <!--        <div id="footer-left"></div>-->
         <div id="footer-middle"> </div>
@@ -11879,7 +11879,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Hi, I'm... For the past five years I've been working on 4 Pi Sky, which is a project focused on detection of radio-transients, and co-ordination of their follow-up. For this talk I was originally just going to present our recently publishing archiving and query tool VOEventDB, but:</p>
+<p>Hi, I'm... For the past five years I've been working on 4 Pi Sky, which is a project focused on detection of radio-transients, and co-ordination of their follow-up. For this talk I was originally just going to present our recently published archiving and query tool VOEventDB, but:</p>
 <ul>
 <li>Since the committee were kind of enough to give me an extended slot, I thought I should perhaps try to talk on a slightly broader theme</li>
 <li>And: there's a load of documentation online already, which you can digest at your leisure!</li>
@@ -11940,7 +11940,7 @@ Sustainable software:</p>
 <li>can be modified by someone other than the dev that wrote it</li>
 <li>is robust to changing dependencies - i.e. it won't break because some other library releases a new 'latest-and-greatest' version with an altered interface.</li>
 </ul>
-<p>It's a set of goals to bear in mind - no project is perfect, and there's a cost/reward trade-off.</p>
+<p>It's a set of goals to bear in mind - no project is perfect, and there's a cost/reward trade-off - there's little point writing extensive documentation for your 10 line shell script.</p>
 
 </div>
 </div>
@@ -11962,7 +11962,18 @@ Sustainable software:</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>There have always been large multi-person / long-term software projects in astronomy.</li>
-<li>(I think) we're seeing an explosion in the number of public 'smaller' codes (cf <a href="http://ascl.net/">ASCL</a>)</li>
+<li>(I think) we're seeing an explosion in the number of 'smaller' public codes (cf <a href="http://ascl.net/">ASCL</a>)</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
 <li>This is a <strong>really good thing</strong>, but comes with difficulties of success</li>
 <li>The easier it is to evaluate, re-use, modify and recycle these codes, the better.</li>
 </ul>
@@ -11977,9 +11988,9 @@ Sustainable software:</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>There have always been a few large-multi person software projects in astronomy.</li>
+<li>There have always been a few large-multi person software projects in astronomy - these produced documented, more-or-less usable software because it was expected from them.</li>
 <li>(I think) we're seeing an explosion in the number of 'small' codes, (previously, projects that would have been written by a PhD student and then disappeared?)</li>
-<li>This is a <strong>really good thing</strong>, but comes with difficulties of success - hard to know what's out there, and whether it's any good.</li>
+<li>This is a <strong>really good thing</strong> -- we're getting better at sharing code and replicating our science -- but comes with difficulties of success - hard to know what's out there, and whether it's any good.</li>
 <li>The easier it is to evaluate, re-use, modify and recycle these codes, the better.</li>
 </ul>
 
@@ -12007,7 +12018,13 @@ Sustainable software:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>... try to persuade you that opening up your code can be done with minimal time investment.</p>
+<p>In this talk, I'll talk a bit about</p>
+<ul>
+<li>VOEventDB - what it's for, what it does. </li>
+<li>Along the way I'll point out some of the ways I've tried to make it suitable for re-use</li>
+<li>and some tools that I found helpful.</li>
+</ul>
+<p>... to try to persuade you that opening up your code can be done with minimal time investment.</p>
 
 </div>
 </div>
@@ -12044,6 +12061,47 @@ Sustainable software:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="This-a-problem!">This a problem!<a class="anchor-link" href="#This-a-problem!">&#182;</a></h3><ul>
+<li>Difficult to plan a follow-up strategy if you can't back-test it</li>
+<li>No way to know what's out there, what the rates are like</li>
+<li>Impossible to check for missed alerts</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>... also helps with converting web-pages into VOEvent feeds.</p>
+
+</div>
+</div>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="This-a-problem!">This a problem!<a class="anchor-link" href="#This-a-problem!">&#182;</a></h3><ul>
+<li>Difficult to plan a follow-up strategy if you can't back-test it with historical data to see what you would have observed previously.</li>
+<li>No way to know what's out there, what the rates are like</li>
+<li>Impossible to check for missed alerts - if your system goes down for half an hour, you want some way to catch up, right?</li>
+</ul>
+<p>And anyway, it solved this problem I had with scraping web-pages to generate VOEvent alerts (you need some way to check if you already alerted the world about a given entry on a web-page).</p>
+
+</div>
+</div>
+</div>
+</aside></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="VOEventDB:-Spec">VOEventDB: Spec<a class="anchor-link" href="#VOEventDB:-Spec">&#182;</a></h3><ul>
 <li>Store raw VOEvent XML, provide XML content at a persistent URL</li>
 <li>Store a common subset of VOEvent metadata in regular database schema</li>
@@ -12061,11 +12119,55 @@ Sustainable software:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Reusable,-decentralized">Reusable, decentralized<a class="anchor-link" href="#Reusable,-decentralized">&#182;</a></h3><ul>
+<li>Agnostic about inputs and outputs</li>
+<li>Easy for any team to set up their own local repository</li>
+</ul>
+
+</div>
+</div>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>So the idea is that this is a component you can use as part of your larger alerts-handling pipeline.</li>
+<li>It would be neat to see wider adoption of VOEvent as a universal format (it may yet happen).</li>
+<li>This is not so much about VOEvent - it's fine, but maybe it will get replaced, whatever - my point is that it seems foolish for multiple different teams to write the same boring, nuts-and-bolts code independently, rather than re-use a shared codebase.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Schema">Schema<a class="anchor-link" href="#Schema">&#182;</a></h2><p><img src="img/dbschema.png" alt="schema"></p>
 
 </div>
 </div>
-</div></section><section>
+</div><aside class="notes">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Schema is very simple: Author, date of authoring, whether it's an observation or a test-packet, when it was received, etc.</li>
+<li>Note, there's really nothing specific to the VOEvent standard about this - VOEvent is the data-interchange format, but the database code could be quite easily modified to work with another data-format.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</aside></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
